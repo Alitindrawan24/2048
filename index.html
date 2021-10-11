@@ -5,7 +5,15 @@
 	<link rel="stylesheet" href="./style.css">
 </head>
 <body>
-<center>
+
+	<div class="how">
+		<span>How to Play?</span>
+		<p>Use your <i><u>arrow keys</u></i> to move the tiles. Tiles with the same number merge into one when they touch. Add them
+		up to reach <b>2048</b>!</p>
+		<img src="/arrow.png" alt="arrow keys">
+	</div>
+
+<div class="game-container">
 	<h1 id="score">Score : 0</h1>	
 	<table border="1">
 		<tr>
@@ -33,8 +41,11 @@
 			<td id="33"></td>
 		</tr>
 	</table>
-	<h1 id="gameOver">Game Over !!</h1>
-</center>
+</div>
+<div id="gameOver">
+	<span>Game Over !!</span><br>
+	<button id="reset" onclick="location.reload();">Try Again</button>
+</div>
 </body>
 </html>
 
