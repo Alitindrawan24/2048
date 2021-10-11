@@ -16,6 +16,35 @@ arr[x][y] = 2;
 fill();
 document.addEventListener("keydown", keyPush);
 
+document.addEventListener("click", (event) => {
+    const keyboardEventObject = {
+        keyCode: 0// example values.
+    };
+    const validButtons = ['up','down','left','right'];
+    if(validButtons.includes(event.target.name)) {
+        switch(event.target.name) {
+            case 'up':
+                keyboardEventObject.keyCode = 38;
+                break;
+            case 'down':
+                keyboardEventObject.keyCode = 40;
+                break;
+            case 'left':
+                keyboardEventObject.keyCode = 37;
+                break;
+            case 'right':
+                keyboardEventObject.keyCode = 39;
+                break;
+        }
+    }
+
+    if(keyboardEventObject.keyCode !== 0) {
+        document.dispatchEvent(
+            new KeyboardEvent("keydown", keyboardEventObject)
+          );
+    }
+});
+
 function keyPush(evt) {
     hasMove = false;
     switch (evt.keyCode) {
