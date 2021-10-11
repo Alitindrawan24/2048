@@ -1,0 +1,12 @@
+table{
+    margin-top: 50px;
+}
+tr, td{
+    height: 100px;
+    width: 100px;
+    text-align: center;
+    font-size: 32px;
+}
+#gameOver{
+    display: none;
+}
