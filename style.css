@@ -1,3 +1,4 @@
+
 body{
     background: linear-gradient(45deg,#f6ffcb,#d693f0);
     
@@ -93,3 +94,33 @@ tr, td{
     transform:scale(1.1);
 }
 
+table {
+  margin-top: 24px;
+}
+tr,
+td {
+  height: 100px;
+  width: 100px;
+  text-align: center;
+  font-size: 32px;
+}
+#gameOver,
+#newGame {
+  display: none;
+}
+
+#newGame {
+  padding: 12px 16px;
+  background-color: #fff;
+  border: 2px solid #000;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#newGame:hover {
+  transform: scale(1.05);
+  background-color: #000;
+  color: #fff;
+}
