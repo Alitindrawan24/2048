@@ -10,3 +10,12 @@ tr, td{
 #gameOver{
     display: none;
 }
+
+.buttons {
+    margin-top: 50px;
+}
+
+.buttons button {
+    height: 40px;
+    width: 40px;
+}
