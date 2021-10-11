@@ -1,42 +1,52 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>2048</title>
-    <link rel="stylesheet" href="./style.css" />
-  </head>
-  <body>
-    <center>
-      <h1 id="score">Score : 0</h1>
-      <button id="newGame" onclick="restart()">New Game</button>
-      <table border="1">
-        <tr>
-          <td id="00"></td>
-          <td id="01"></td>
-          <td id="02"></td>
-          <td id="03"></td>
-        </tr>
-        <tr>
-          <td id="10"></td>
-          <td id="11"></td>
-          <td id="12"></td>
-          <td id="13"></td>
-        </tr>
-        <tr>
-          <td id="20"></td>
-          <td id="21"></td>
-          <td id="22"></td>
-          <td id="23"></td>
-        </tr>
-        <tr>
-          <td id="30"></td>
-          <td id="31"></td>
-          <td id="32"></td>
-          <td id="33"></td>
-        </tr>
-      </table>
-      <h1 id="gameOver">Game Over !!</h1>
-    </center>
-  </body>
+<head>
+	<title>2048</title>
+	<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+	<div class="how">
+		<span>How to Play?</span>
+		<p>Use your <i><u>arrow keys</u></i> to move the tiles. Tiles with the same number merge into one when they touch. Add them
+		up to reach <b>2048</b>!</p>
+		<img src="/arrow.png" alt="arrow keys">
+	</div>
+
+<div class="game-container">
+	<h1 id="score">Score : 0</h1>	
+	<table border="1">
+		<tr>
+			<td id="00"></td>
+			<td id="01"></td>
+			<td id="02"></td>
+			<td id="03"></td>
+		</tr>
+		<tr>
+			<td id="10"></td>
+			<td id="11"></td>
+			<td id="12"></td>
+			<td id="13"></td>
+		</tr>
+		<tr>
+			<td id="20"></td>
+			<td id="21"></td>
+			<td id="22"></td>
+			<td id="23"></td>
+		</tr>
+		<tr>
+			<td id="30"></td>
+			<td id="31"></td>
+			<td id="32"></td>
+			<td id="33"></td>
+		</tr>
+	</table>
+</div>
+<div id="gameOver">
+	<span>Game Over !!</span><br>
+	<button id="reset" onclick="restart()">Try Again</button>
+</div>
+</body>
 </html>
 
 <script src="./app.js"></script>
