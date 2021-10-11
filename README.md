@@ -1,4 +1,3 @@
-# 2048
 <h1 align='center'>2048</h1>
 
 Simple 2048 Game using HTML, CSS, and JavaScript  
