@@ -226,3 +226,25 @@ function isGameOver() {
     }
     return gameOver;
 }
+
+function restart() {
+    arr = [];
+    hasCombine = [];
+    hasMove = true;
+    score = 0;
+    for (var i = 0; i < 4; i++) {
+        arr[i] = [];
+        hasCombine[i] = [];
+        for (var j = 0; j < 4; j++) {
+            arr[i][j] = 0;
+            hasCombine[i][j] = false;
+        }
+    }
+    x = Math.floor(Math.random() * 4);
+    y = Math.floor(Math.random() * 4);
+    arr[x][y] = 2;
+
+    document.getElementById('gameOver').style.display = 'none';
+    document.getElementById('score').innerHTML = 'Score : ' + score;
+    fill();
+}
