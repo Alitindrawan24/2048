@@ -1,137 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+html {
+  background: linear-gradient(to right, #e1eec3, #f05053) no-repeat center
+    center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: 'Play', sans-serif;
+}
 body {
-    background: linear-gradient(45deg, #f6ffcb, #d693f0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
 table {
-    margin-top: 50px;
-    border-radius: 10px;
-    background: linear-gradient(45deg, #80c1ff, #3c72d6);
-    box-shadow: 0px 0px 54px 21px rgb(171, 177, 140);
+  margin-top: 30px;
 }
-
 tr,
 td {
-    height: 100px;
-    width: 100px;
-    text-align: center;
-    font-size: 32px;
-    border-radius: 10px;
-    background: linear-gradient(45deg, #e0d7d9, #e6f5e2);
+  z-index: 1;
+  height: 100px;
+  width: 115px;
+  text-align: center;
+  font-size: 32px;
 }
-
-.how {
-    position: absolute;
-    top: 20%;
-    left: 4%;
-    width: 20%;
-    background: linear-gradient(45deg, #f890aa, #94ff79);
-    padding: 30px;
-    box-shadow: 0px 0px 54px 1px rgb(171, 177, 140);
-    border-radius: 20px;
-    text-align: center
-}
-
-.how span {
-    font-size: 28px;
-    font-family: arial;
-    font-weight: bold;
-}
-
-.how p {
-    font-size: 23px;
-    font-family: arial;
-    font-weight: normal;
-}
-
-.how img {
-    width: 80%;
-}
-
-.game-container {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
 #score {
-    width: 100%;
-    text-align: center;
-    font-size: 38px;
-    font-family: monospace;
-    background: linear-gradient(45deg, #0cf73f, #79ff80);
-    border-radius: 20px;
-    box-shadow: 0px 0px 54px 11px rgb(171, 177, 140);
+  background: linear-gradient(to right, hsl(98 100% 50%), hsl(204 100% 50%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin-top: 30px;
 }
-
 #gameOver {
-    background: linear-gradient(45deg, #fc4c4c, #cf3c3c);
-    border-radius: 20px;
-    display: none;
-    padding: 20px;
-    position: absolute;
-    top: 40%;
-    right: 5%;
-    text-align: center;
-    box-shadow: 0px 0px 54px 11px rgb(171, 177, 140);
+  margin-top: 10px;
+  display: none;
+  background: linear-gradient(to right, hsl(98 100% 50%), hsl(204 100% 50%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
 }
-
-#gameOver span {
-    font-size: 38px;
-    font-family: monospace;
+.main {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 30rem;
+  height: 38rem;
+  border-radius: 20px;
 }
-
-#gameOver button {
-    margin: 15px;
-    font-size: 28px;
-    font-family: monospace;
-    border-radius: 10px;
-    padding: 10px;
-    outline: 0;
-    transition: all 0.3s ease;
+.container {
+  left: 50%;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  flex-wrap: wrap;
+  transition-timing-function: 'cubic-bezier(.03,.98,.52,.99)';
 }
-
-#gameOver button:hover {
-    transform: scale(1.1);
+.container .card {
+  position: absolute;
+  width: 500px;
+  height: 550px;
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  overflow: hidden;
+  top: 50%;
 }
-
-table {
-    margin-top: 24px;
-}
-
-tr,
-td {
-    height: 100px;
-    width: 100px;
-    text-align: center;
-    font-size: 32px;
-}
-
-#gameOver,
-#newGame {
-    display: none;
-}
-
-#newGame {
-    padding: 12px 16px;
-    background-color: #fff;
-    border: 2px solid #000;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-#newGame:hover {
-    transform: scale(1.05);
-    background-color: #000;
-    color: #fff;
-}
-
-.buttons {
-    margin-top: 40px;
-}
-
-.buttons button {
-    height: 60px;
-    width: 60px;
+.container .card .content {
+  text-align: center;
+  transition: 0.5s;
 }
