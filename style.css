@@ -135,3 +135,23 @@ td {
     height: 60px;
     width: 60px;
 }
+
+.btn-translate{
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+    border: none;
+    cursor: pointer;
+    border-radius: 100%;
+    background-color: #0cf73f;
+}
+
+.btn-translate svg{
+    height: auto;
+    width: 25px;
+}
