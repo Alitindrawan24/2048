@@ -165,7 +165,7 @@ function combine(a, b, x, y) {
         hasCombine[x][y] = true;
         hasMove = true;
         score += arr[x][y];
-        document.getElementById('score').innerHTML = "Score : " + score;
+        document.getElementById('num-score').innerHTML = score;
     }
 }
 
@@ -245,6 +245,44 @@ function restart() {
     arr[x][y] = 2;
 
     document.getElementById('gameOver').style.display = 'none';
-    document.getElementById('score').innerHTML = 'Score : ' + score;
+    document.getElementById('num-score').innerHTML = score;
     fill();
+}
+
+// btn-translate
+let btnTranslate = document.getElementsByClassName("btn-translate")[0];
+
+btnTranslate.onclick = () => {
+    let body = document.getElementsByTagName("body")[0];
+
+    if(body.className != "id"){
+        // ID
+        body.classList.add("id");
+
+        // .how -> span
+        document.querySelector('.how span').textContent = "Bagaimana cara Bermain?";
+        // .how -> p
+        document.querySelector('.how p').innerHTML = "Gunakan <i><u>tombol panah</u></i> Anda untuk memindahkan ubin. Ubin dengan nomor yang sama bergabung menjadi satu ketika mereka menyentuh. Tambahkan hingga mencapai <b>2048</b>!";
+        // #text-score
+        document.querySelector('#text-score').textContent = "Skor : ";
+        // #gameOver -> span
+        document.querySelector('#gameOver span').textContent = "Permainan Selesai !!";
+        // #gameOver -> #reset
+        document.querySelector('#gameOver #reset').textContent = "Coba Lagi";
+
+    } else {
+        // EN
+        body.classList.remove("id");
+
+        // how -> span
+        document.querySelector('.how span').textContent = "How to Play?"
+        // how -> p
+        document.querySelector('.how p').innerHTML = "Use your <i><u>arrow keys</u></i> to move the tiles. Tiles with the same number merge into one when they touch. Add them up to reach <b>2048</b>!"
+        // #text-score
+        document.querySelector('#text-score').textContent = "Score : ";
+        // #gameOver -> span
+        document.querySelector('#gameOver span').textContent = "Game Over !!";
+        // #gameOver -> #reset
+        document.querySelector('#gameOver #reset').textContent = "Try Again";
+    }
 }
