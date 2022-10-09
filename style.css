@@ -1,157 +1,218 @@
+html,
 body {
-    background: linear-gradient(45deg, #f6ffcb, #d693f0);
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
 }
 
-table {
-    margin-top: 50px;
-    border-radius: 10px;
-    background: linear-gradient(45deg, #80c1ff, #3c72d6);
-    box-shadow: 0px 0px 54px 21px rgb(171, 177, 140);
-}
-
-tr,
-td {
-    height: 100px;
-    width: 100px;
-    text-align: center;
-    font-size: 32px;
-    border-radius: 10px;
-    background: linear-gradient(45deg, #e0d7d9, #e6f5e2);
-}
-
-.how {
-    position: absolute;
-    top: 20%;
-    left: 4%;
-    width: 20%;
-    background: linear-gradient(45deg, #f890aa, #94ff79);
-    padding: 30px;
-    box-shadow: 0px 0px 54px 1px rgb(171, 177, 140);
-    border-radius: 20px;
-    text-align: center
-}
-
-.how span {
-    font-size: 28px;
-    font-family: arial;
-    font-weight: bold;
-}
-
-.how p {
-    font-size: 23px;
-    font-family: arial;
-    font-weight: normal;
-}
-
-.how img {
-    width: 80%;
+td,
+.how h3,
+#num-score,
+.how strong,
+#gameOver button,
+header .btn-how-to,
+.how .btn-close-dialog {
+  font-family: 'Fredoka One', cursive;
 }
 
 .game-container {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-#score {
-    width: 100%;
-    text-align: center;
-    font-size: 38px;
-    font-family: monospace;
-    background: linear-gradient(45deg, #0cf73f, #79ff80);
-    border-radius: 20px;
-    box-shadow: 0px 0px 54px 11px rgb(171, 177, 140);
-}
-
-#gameOver {
-    background: linear-gradient(45deg, #fc4c4c, #cf3c3c);
-    border-radius: 20px;
-    display: none;
-    padding: 20px;
-    position: absolute;
-    top: 40%;
-    right: 5%;
-    text-align: center;
-    box-shadow: 0px 0px 54px 11px rgb(171, 177, 140);
-}
-
-#gameOver span {
-    font-size: 38px;
-    font-family: monospace;
-}
-
-#gameOver button {
-    margin: 15px;
-    font-size: 28px;
-    font-family: monospace;
-    border-radius: 10px;
-    padding: 10px;
-    outline: 0;
-    transition: all 0.3s ease;
-}
-
-#gameOver button:hover {
-    transform: scale(1.1);
+  margin: auto;
+  padding: 30px;
+  width: fit-content;
 }
 
 table {
-    margin-top: 24px;
+  border: 0;
+  min-width: 350px;
+  border-radius: 3px;
+  border-spacing: 10px;
+  background-color: #bbb;
 }
 
-tr,
-td {
-    height: 100px;
-    width: 100px;
-    text-align: center;
-    font-size: 32px;
+table tr td {
+  border: 0;
+  width: 100px;
+  height: 100px;
+  font-size: 2.5em;
+  border-radius: 3px;
+  text-align: center;
+  background-color: #e7e7e7;
 }
 
-#gameOver,
-#newGame {
-    display: none;
+header {
+  display: flex;
+  min-width: 350px;
+  max-width: 460px;
+  position: relative;
+  margin-bottom: 30px;
+  justify-content: center;
 }
 
-#newGame {
-    padding: 12px 16px;
-    background-color: #fff;
-    border: 2px solid #000;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
+header .score {
+  gap: 10px;
+  width: 100px;
+  display: flex;
+  font-size: 20px;
+  border-radius: 3px;
+  padding: 13px 50px;
+  background: #f4f4f4;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
-#newGame:hover {
-    transform: scale(1.05);
-    background-color: #000;
-    color: #fff;
+header .score #num-score {
+  font-size: 2em;
 }
 
-.buttons {
-    margin-top: 40px;
+header .btn-translate,
+header .btn-how-to {
+  width: 50px;
+  height: 50px;
+  bottom: 17px;
+  border: none;
+  display: flex;
+  cursor: pointer;
+  position: absolute;
+  border-radius: 100%;
+  align-items: center;
+  justify-content: center;
+  background-color: #0cf73f;
+  transition: all 0.2s ease;
+  tr
 }
 
-.buttons button {
-    height: 60px;
-    width: 60px;
+header .btn-translate {
+  right: 0;
 }
 
-.btn-translate{
-    position: fixed;
-    top: 25px;
-    right: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 50px;
-    width: 50px;
-    border: none;
-    cursor: pointer;
-    border-radius: 100%;
-    background-color: #0cf73f;
+header .btn-how-to {
+  left: 0;
+  color: #fff;
+  font-size: 30px;
 }
 
-.btn-translate svg{
-    height: auto;
-    width: 25px;
+header .btn-translate img {
+  width: 25px;
+  height: auto;
+}
+
+#dialog-how-to {
+  border: 0;
+  width: 85vw;
+  border-radius: 13px;
+  box-shadow: 0px 0px 23px #d4d4d4;
+}
+
+.how {
+  text-align: center;
+  position: relative;
+  padding: 0 30px 20px;
+}
+
+.how h3 {
+  font-size: 1.6em;
+}
+
+.how img {
+  max-width: 80%;
+}
+
+.how .btn-close-dialog {
+  top: 0;
+  right: 0;
+  border: 0;
+  color: #3c3c3c;
+  padding: 0 20px;
+  font-size: 20px;
+  cursor: pointer;
+  position: absolute;
+  background: transparent;
+}
+
+.how p {
+  font-size: 1.3em;
+}
+
+.how strong {
+  font-weight: unset;
+}
+
+#gameOver {
+  display: none;
+  text-align: center;
+}
+
+#gameOver button {
+  border: 0;
+  outline: 0;
+  margin: 30px;
+  color: #0b3e0b;
+  font-size: 2em;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: #caff8a;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+._2 {
+  background-color: #caff8a;
+}
+
+._4 {
+  background-color: #3bf4fb;
+}
+
+._8 {
+  background-color: #ffb7ff;
+}
+
+._16 {
+  background-color: #be0aff;
+}
+
+._32 {
+  background-color: #580aff;
+}
+
+._64 {
+  background-color: #119822;
+}
+
+._128 {
+  background-color: #147df5;
+}
+
+._256 {
+  background-color: #0aff99;
+}
+
+._512 {
+  background-color: #ae2012;
+}
+
+._1024 {
+  background-color: #fec601;
+}
+
+._2048 {
+  background-color: #ee5622;
+}
+
+._greater-than-2048 {
+  color: #fff;
+  background-color: #0b0c0b;
+}
+
+@media (max-width: 515px) {
+  table tr td {
+    width: 70px;
+    height: 70px;
+    font-size: 2em;
+  }
 }
