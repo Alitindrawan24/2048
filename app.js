@@ -1,3 +1,6 @@
+let dialogHowTo = document.querySelector('#dialog-how-to');
+let stopGame = false;
+
 let arr = [];
 let hasCombine = [];
 let hasMove = true;
@@ -46,6 +49,8 @@ document.addEventListener("click", (event) => {
 });
 
 function keyPush(evt) {
+    if (dialogHowTo.open || stopGame) return;
+
     hasMove = false;
     switch (evt.keyCode) {
         case 37:
@@ -122,16 +127,32 @@ function fill() {
             randomXY();
     }
     if (isFull()) {
-        if (isGameOver())
-            document.getElementById("gameOver").style.display = "block";
+      if (isGameOver()) {
+        document.getElementById('gameOver').style.display = 'block';
+
+        arr = arr.map((line, lineIndex) => line.map((item, itemIndex) => {
+          if (lineIndex === 0 || lineIndex === arr.length - 1) return '*';
+          return ['GAME', 'OVER'][lineIndex - 1][itemIndex];
+        }));
+
+        stopGame = true;
+      }
     }
     for (var i = 0; i < 4; i++) {
         for (var j = 0; j < 4; j++) {
             temp = document.getElementById(i + "" + j);
-            if (arr[i][j] != 0)
-                temp.innerHTML = arr[i][j];
-            else
+			      
+            if (arr[i][j] != 0) {
+				        const value = arr[i][j];
+                
+                temp.innerHTML = value;
+                temp.classList = [
+                  `_${value <= 2048 ? value : 'greater-than-2048'}`,
+                ];
+            } else {
                 temp.innerHTML = '';
+                temp.classList = [];
+            }
         }
     }
     resetHasCombine();
@@ -231,6 +252,7 @@ function restart() {
     arr = [];
     hasCombine = [];
     hasMove = true;
+    stopGame = false;
     score = 0;
     for (var i = 0; i < 4; i++) {
         arr[i] = [];
@@ -260,13 +282,11 @@ btnTranslate.onclick = () => {
         body.classList.add("id");
 
         // .how -> span
-        document.querySelector('.how span').textContent = "Bagaimana cara Bermain?";
+        document.querySelector('.how h3').textContent = "Bagaimana cara Bermain?";
         // .how -> p
         document.querySelector('.how p').innerHTML = "Gunakan <i><u>tombol panah</u></i> Anda untuk memindahkan ubin. Ubin dengan nomor yang sama bergabung menjadi satu ketika mereka menyentuh. Tambahkan hingga mencapai <b>2048</b>!";
         // #text-score
-        document.querySelector('#text-score').textContent = "Skor : ";
-        // #gameOver -> span
-        document.querySelector('#gameOver span').textContent = "Permainan Selesai !!";
+        document.querySelector('#text-score').textContent = "Skor";
         // #gameOver -> #reset
         document.querySelector('#gameOver #reset').textContent = "Coba Lagi";
 
@@ -275,14 +295,20 @@ btnTranslate.onclick = () => {
         body.classList.remove("id");
 
         // how -> span
-        document.querySelector('.how span').textContent = "How to Play?"
+        document.querySelector('.how h3').textContent = "How to Play?"
         // how -> p
         document.querySelector('.how p').innerHTML = "Use your <i><u>arrow keys</u></i> to move the tiles. Tiles with the same number merge into one when they touch. Add them up to reach <b>2048</b>!"
         // #text-score
-        document.querySelector('#text-score').textContent = "Score : ";
-        // #gameOver -> span
-        document.querySelector('#gameOver span').textContent = "Game Over !!";
+        document.querySelector('#text-score').textContent = "Score";
         // #gameOver -> #reset
         document.querySelector('#gameOver #reset').textContent = "Try Again";
     }
+}
+
+function onClickBtnHowTo() {
+    dialogHowTo.showModal();
+}
+
+function closeHowToDialog() {
+    dialogHowTo.close();
 }
