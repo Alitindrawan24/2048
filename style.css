@@ -147,12 +147,12 @@ header .btn-translate img {
   border: 0;
   outline: 0;
   margin: 30px;
-  color: #0b3e0b;
+  color: #fff;
   font-size: 2em;
   cursor: pointer;
   padding: 10px 20px;
   border-radius: 10px;
-  background: #caff8a;
+  background: #0cf73f;
   transition: all 0.2s ease;
 }
 
