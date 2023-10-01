@@ -27,6 +27,7 @@ table {
   border-radius: 3px;
   border-spacing: 10px;
   background-color: #bbb;
+
 }
 
 table tr td {
@@ -37,6 +38,8 @@ table tr td {
   border-radius: 3px;
   text-align: center;
   background-color: #e7e7e7;
+  /* added transition */
+  transition: all 0.5s ease;
 }
 
 header {
@@ -79,7 +82,6 @@ header .btn-how-to {
   justify-content: center;
   background-color: #0cf73f;
   transition: all 0.2s ease;
-  tr
 }
 
 header .btn-translate {
