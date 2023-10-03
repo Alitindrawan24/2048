@@ -3,6 +3,10 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
+  background: url('assets/bg.gif');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 td,
@@ -26,7 +30,12 @@ table {
   min-width: 350px;
   border-radius: 3px;
   border-spacing: 10px;
-  background-color: #bbb;
+  box-shadow: 0 0 .2rem #fff,
+  0 0 .2rem #fff,
+  0 0 2rem #bc13fe,
+  0 0 0.8rem #bc13fe,
+  0 0 2.8rem #bc13fe,
+  inset 0 0 1.3rem #bc13fe; 
 
 }
 
@@ -37,7 +46,13 @@ table tr td {
   font-size: 2.5em;
   border-radius: 3px;
   text-align: center;
-  background-color: #e7e7e7;
+  background-color: black;
+  box-shadow: 0 0 .2rem #fff,
+  0 0 .2rem #fff,
+  0 0 2rem #bc13fe,
+  0 0 0.8rem #bc13fe,
+  0 0 2.8rem #bc13fe,
+  inset 0 0 1.3rem #bc13fe; 
   /* added transition */
   transition: all 0.5s ease;
 }
@@ -58,10 +73,25 @@ header .score {
   font-size: 20px;
   border-radius: 3px;
   padding: 13px 50px;
-  background: #f4f4f4;
+  box-shadow: 0 0 .2rem #fff,
+  0 0 .2rem #fff,
+  0 0 2rem #bc13fe,
+  0 0 0.8rem #bc13fe,
+  0 0 2.8rem #bc13fe,
+  inset 0 0 1.3rem #bc13fe; 
+  background: transparent;
+  color: white;
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  color: #fff;
+  text-shadow:
+  0 0 2px #fff,
+  0 0 10px #bc13fe,
+  0 0 45px #bc13fe,
+  0 0 55px #bc13fe,
+  0 0 70px #bc13fe,
+  0 0 80px #bc13fe;
 }
 
 header .score #num-score {
@@ -80,7 +110,13 @@ header .btn-how-to {
   border-radius: 100%;
   align-items: center;
   justify-content: center;
-  background-color: #0cf73f;
+  background-color: transparent;
+  box-shadow: 0 0 .2rem #fff,
+  0 0 .2rem #fff,
+  0 0 2rem #bc13fe,
+  0 0 0.8rem #bc13fe,
+  0 0 2.8rem #bc13fe,
+  inset 0 0 1.3rem #bc13fe; 
   transition: all 0.2s ease;
 }
 
@@ -103,6 +139,20 @@ header .btn-translate img {
   border: 0;
   width: 85vw;
   border-radius: 13px;
+  color: white;
+  background:url('assets/howtobg.png') ;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  backdrop-filter: blur(2px);
+  text-shadow:
+  0 0 2px #fff,
+  0 0 10px #bc13fe,
+  0 0 45px #bc13fe,
+  0 0 55px #bc13fe,
+  0 0 70px #bc13fe,
+  0 0 80px #bc13fe;
+  
   box-shadow: 0px 0px 23px #d4d4d4;
 }
 
@@ -154,7 +204,13 @@ header .btn-translate img {
   cursor: pointer;
   padding: 10px 20px;
   border-radius: 10px;
-  background: #0cf73f;
+  background: transparent;
+  box-shadow: 0 0 .2rem #fff,
+  0 0 .2rem #fff,
+  0 0 2rem #bc13fe,
+  0 0 0.8rem #bc13fe,
+  0 0 2.8rem #bc13fe,
+  inset 0 0 1.3rem #bc13fe; 
   transition: all 0.2s ease;
 }
 
@@ -163,39 +219,39 @@ button:hover {
 }
 
 ._2 {
-  background-color: #caff8a;
+  background-color: #d9ffaa;
 }
 
 ._4 {
-  background-color: #3bf4fb;
+  background-color: #89fbff;
 }
 
 ._8 {
-  background-color: #ffb7ff;
+  background-color: #ffdfff;
 }
 
 ._16 {
-  background-color: #be0aff;
+  background-color: #bd07ff;
 }
 
 ._32 {
-  background-color: #580aff;
+  background-color: #8349ff;
 }
 
 ._64 {
-  background-color: #119822;
+  background-color: #379944;
 }
 
 ._128 {
-  background-color: #147df5;
+  background-color: #5fa2f0;
 }
 
 ._256 {
-  background-color: #0aff99;
+  background-color: #62f9ba;
 }
 
 ._512 {
-  background-color: #ae2012;
+  background-color: #ac433a;
 }
 
 ._1024 {
@@ -218,3 +274,4 @@ button:hover {
     font-size: 2em;
   }
 }
+
