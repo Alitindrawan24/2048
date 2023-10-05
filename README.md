@@ -19,5 +19,5 @@ Web link - https://alitindrawan24.github.io/2048/
 
 ## Contributors:
 <a href="https://github.com/Alitindrawan24/2048/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Alitindrawan24/2048" />
+  <img src="https://contrib.rocks/image?repo=Alitindrawan24/2048&anon=1" />
 </a>
