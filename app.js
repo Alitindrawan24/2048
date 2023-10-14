@@ -249,27 +249,70 @@ function isGameOver() {
 }
 
 function restart() {
+    // Reset game state
     arr = [];
     hasCombine = [];
     hasMove = true;
     stopGame = false;
     score = 0;
-    for (var i = 0; i < 4; i++) {
+
+    // Initialize the game board
+    for (let i = 0; i < 4; i++) {
         arr[i] = [];
         hasCombine[i] = [];
-        for (var j = 0; j < 4; j++) {
+        for (let j = 0; j < 4; j++) {
             arr[i][j] = 0;
             hasCombine[i][j] = false;
         }
     }
-    x = Math.floor(Math.random() * 4);
-    y = Math.floor(Math.random() * 4);
-    arr[x][y] = 2;
 
+    // Generate a new tile
+    generateNewTile();
+
+    // Hide game over message
     document.getElementById('gameOver').style.display = 'none';
-    document.getElementById('num-score').innerHTML = score;
-    fill();
+
+    // Update the score display
+    updateScoreDisplay();
+
+    // Update the game board display
+    updateGameBoardDisplay();
 }
+
+function generateNewTile() {
+    // Generate a new tile (either 2 or 4) at a random empty position
+    let emptyPositions = [];
+    for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 4; j++) {
+            if (arr[i][j] === 0) {
+                emptyPositions.push({ x: i, y: j });
+            }
+        }
+    }
+
+    if (emptyPositions.length > 0) {
+        const randomPosition = emptyPositions[Math.floor(Math.random() * emptyPositions.length)];
+        const newValue = Math.random() < 0.9 ? 2 : 4;
+        arr[randomPosition.x][randomPosition.y] = newValue;
+    }
+}
+
+function updateScoreDisplay() {
+    // Update the displayed score
+    document.getElementById('num-score').innerHTML = score;
+}
+
+function updateGameBoardDisplay() {
+    // Update the game board display based on the current state of the game array
+    for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 4; j++) {
+            const tileElement = document.getElementById(i + "" + j);
+            tileElement.innerHTML = arr[i][j] !== 0 ? arr[i][j] : '';
+            tileElement.className = arr[i][j] !== 0 ? `_${arr[i][j] <= 2048 ? arr[i][j] : 'greater-than-2048'}` : '';
+        }
+    }
+}
+
 
 // btn-translate
 let btnTranslate = document.getElementsByClassName("btn-translate")[0];
@@ -328,3 +371,35 @@ document.querySelector(".theme1").addEventListener("click", goLight, false); // 
 document.querySelector(".theme2").addEventListener("click", goDark, false); // Tells the second button to run the goDark function when clicked
 
 switchImmediately(); // Invoke the function
+function updateTheme(theme) {
+    const body = document.querySelector("body");
+    if (theme === "light") {
+      body.classList.remove("dark");
+      document.querySelector(".button1.theme1").classList.remove("dark-theme-button");
+    } else {
+      body.classList.add("dark");
+      document.querySelector(".button1.theme1").classList.add("dark-theme-button");
+    }
+  }
+  
+  document.querySelector(".theme1").addEventListener("click", () => {
+    updateTheme("light");
+  });
+  
+  document.querySelector(".theme2").addEventListener("click", () => {
+    updateTheme("dark");
+  });
+
+// Functions for playing sounds
+const moveSound = document.getElementById('moveSound');
+const mergeSound = document.getElementById('mergeSound');
+
+function playMoveSound() {
+    moveSound.play();
+}
+
+function playMergeSound() {
+    mergeSound.play();
+}
+
+// ... (rest of your JavaScript code) ...

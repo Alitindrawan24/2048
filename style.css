@@ -351,3 +351,191 @@ button:hover {
 .button1:hover:after{
   transform: translate(0,0);
 }
+
+
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  /* Adjustments for smaller screens */
+  body {
+    font-size: 14px;
+  }
+
+  .game-container {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  table {
+    min-width: unset;
+  }
+
+  table tr td {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2em;
+  }
+
+  header {
+    max-width: 100%;
+  }
+
+  header .score {
+    width: 80px;
+    padding: 10px 20px;
+    font-size: 18px;
+  }
+
+  header .btn-how-to,
+  header .btn-translate {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-height: 480px) {
+  /* Further adjustments for smaller screens in vertical orientation */
+  .game-container {
+    margin-top: 20%;
+  }
+}
+
+#dialog-how-to {
+  /* Existing styles */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: auto;
+}
+/* Existing CSS code */
+
+/* ... (your other CSS rules) ... */
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.button1 {
+  background: linear-gradient(to right, #cc2b5e, #753a88);
+  color: white;
+  border-radius: 8px;
+  line-height: 24px;
+  padding: 10px 25px; /* Adjusted padding */
+  margin: 0 10px;
+}
+
+.button1:hover:after {
+  transform: translate(0, 0);
+}
+
+@media (max-width: 768px) {
+  .buttonContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .button1 {
+    margin: 10px 0;
+    max-width: 80%;
+  }
+}
+
+/* ... (your other CSS rules) ... */
+/* Dark theme button styles */
+body.dark .button1 {
+  background: linear-gradient(to right, #6d2180, #2e003e);
+}
+
+body.dark .button1:hover:after {
+  transform: translate(0, 0);
+}
+
+/* Light theme button styles */
+body.light .button1 {
+  background: linear-gradient(to right, #cc2b5e, #753a88);
+}
+
+body.light .button1:hover:after {
+  transform: translate(0, 0);
+}
+.button1.theme1 {
+  background: linear-gradient(to right, #cc2b5e, #753a88);
+  color: white;
+  border-radius: 8px;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+}
+
+.button1.theme2 {
+  background: linear-gradient(to right, YOUR_DARK_THEME_COLOR_1, YOUR_DARK_THEME_COLOR_2);
+  color: white;
+  border-radius: 8px;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+}
+
+.button1.theme1.dark-theme-button {
+  background: linear-gradient(to right, YOUR_DARK_THEME_COLOR_1, YOUR_DARK_THEME_COLOR_2);
+}
+
+.button1.theme2.dark-theme-button {
+  background: linear-gradient(to right, #cc2b5e, #753a88);
+}
+/* Your CSS styles ... */
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.button1 {
+  background: linear-gradient(to right, #cc2b5e, #753a88);
+  color: white;
+  border-radius: 8px;
+  line-height: 24px;
+  padding: 10px 25px; /* Adjusted padding */
+  margin: 0 10px;
+}
+
+.button1:hover:after {
+  transform: translate(0, 0);
+}
+
+/* ... (rest of your CSS styles) ... */
+
+/* Dark theme button styles */
+body.dark .button1 {
+  background: linear-gradient(to right, #6d2180, #2e003e);
+}
+
+body.dark .button1:hover:after {
+  transform: translate(0, 0);
+}
+
+/* Light theme button styles */
+body.light .button1 {
+  background: linear-gradient(to right, #cc2b5e, #753a88);
+}
+
+body.light .button1:hover:after {
+  transform: translate(0, 0);
+}
+
+.button1.theme1 {
+  background: linear-gradient(to right, #cc2b5e, #753a88);
+  color: white;
+  border-radius: 8px;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+}
+
+
