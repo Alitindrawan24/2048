@@ -390,16 +390,3 @@ function updateTheme(theme) {
     updateTheme("dark");
   });
 
-// Functions for playing sounds
-const moveSound = document.getElementById('moveSound');
-const mergeSound = document.getElementById('mergeSound');
-
-function playMoveSound() {
-    moveSound.play();
-}
-
-function playMergeSound() {
-    mergeSound.play();
-}
-
-// ... (rest of your JavaScript code) ...
