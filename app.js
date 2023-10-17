@@ -44,7 +44,7 @@ document.addEventListener("click", (event) => {
     if(keyboardEventObject.keyCode !== 0) {
         document.dispatchEvent(
             new KeyboardEvent("keydown", keyboardEventObject)
-          );
+        );
     }
 });
 
@@ -127,27 +127,27 @@ function fill() {
             randomXY();
     }
     if (isFull()) {
-      if (isGameOver()) {
-        document.getElementById('gameOver').style.display = 'block';
+        if (isGameOver()) {
+            document.getElementById('gameOver').style.display = 'block';
 
-        arr = arr.map((line, lineIndex) => line.map((item, itemIndex) => {
-          if (lineIndex === 0 || lineIndex === arr.length - 1) return '*';
-          return ['GAME', 'OVER'][lineIndex - 1][itemIndex];
-        }));
+            arr = arr.map((line, lineIndex) => line.map((item, itemIndex) => {
+                if (lineIndex === 0 || lineIndex === arr.length - 1) return '*';
+                return ['GAME', 'OVER'][lineIndex - 1][itemIndex];
+            }));
 
-        stopGame = true;
-      }
+            stopGame = true;
+        }
     }
     for (var i = 0; i < 4; i++) {
         for (var j = 0; j < 4; j++) {
             temp = document.getElementById(i + "" + j);
-			      
+
             if (arr[i][j] != 0) {
-				        const value = arr[i][j];
-                
+                const value = arr[i][j];
+
                 temp.innerHTML = value;
                 temp.classList = [
-                  `_${value <= 2048 ? value : 'greater-than-2048'}`,
+                    `_${value <= 2048 ? value : 'greater-than-2048'}`,
                 ];
             } else {
                 temp.innerHTML = '';
@@ -313,39 +313,48 @@ function updateGameBoardDisplay() {
     }
 }
 
+// Function to update text content based on the selected language
+function updateTextContent(currentLanguage) {
+    const howHeader = document.querySelector('.how h3');
+    const howText = document.querySelector('.how p');
+    const textScore = document.querySelector('#text-score');
+    const resetButton = document.querySelector('#gameOver #reset');
+
+    if (currentLanguage === 'en') {
+        howHeader.textContent = 'How to Play?';
+        howText.innerHTML = 'Use your <i><u>arrow keys</u></i> to move the tiles. Tiles with the same number merge into one when they touch. Add them up to reach <b>2048</b>!';
+        textScore.textContent = 'Score';
+        resetButton.textContent = 'Try Again';
+    }
+    else if (currentLanguage === 'id') {
+        howHeader.textContent = 'Bagaimana cara Bermain?';
+        howText.innerHTML = 'Gunakan <i><u>tombol panah</u></i> Anda untuk memindahkan ubin. Ubin dengan nomor yang sama bergabung menjadi satu ketika mereka menyentuh. Tambahkan hingga mencapai <b>2048</b>';
+        textScore.textContent = 'Skor';
+        resetButton.textContent = 'Coba Lagi';
+    }
+    else if (currentLanguage === 'es') {
+        howHeader.textContent = 'Cómo jugar';
+        howText.innerHTML = 'Utiliza las teclas de flecha <i><u>arrow keys</u></i> para mover las fichas. Las fichas con el mismo número se fusionan en una cuando se tocan. ¡Súmalas hasta alcanzar <b>2048</b>!';
+        textScore.textContent = 'Puntuación';
+        resetButton.textContent = 'Volver a intentar';
+    }
+    else if (currentLanguage === 'zh') {
+        howHeader.textContent = '怎么玩';
+        howText.innerHTML = '使用您的 <i><u>方向键</u></i> 移动方块。相同数字的方块相互接触时会合并成一个。将它们相加以达到 <b>2048</b>！';
+        textScore.textContent = '分数';
+        resetButton.textContent = '再试一次';
+    }
+}
 
 // btn-translate
 let btnTranslate = document.getElementsByClassName("btn-translate")[0];
+const supportedLanguages = ['en', 'id', 'es', 'zh']; // Languages - English, Indonesian, Spanish, Chinese
+let currentLanguageIndex = 0; // Start with the first language
 
 btnTranslate.onclick = () => {
-    let body = document.getElementsByTagName("body")[0];
-
-    if(body.className != "id"){
-        // ID
-        body.classList.add("id");
-
-        // .how -> span
-        document.querySelector('.how h3').textContent = "Bagaimana cara Bermain?";
-        // .how -> p
-        document.querySelector('.how p').innerHTML = "Gunakan <i><u>tombol panah</u></i> Anda untuk memindahkan ubin. Ubin dengan nomor yang sama bergabung menjadi satu ketika mereka menyentuh. Tambahkan hingga mencapai <b>2048</b>!";
-        // #text-score
-        document.querySelector('#text-score').textContent = "Skor";
-        // #gameOver -> #reset
-        document.querySelector('#gameOver #reset').textContent = "Coba Lagi";
-
-    } else {
-        // EN
-        body.classList.remove("id");
-
-        // how -> span
-        document.querySelector('.how h3').textContent = "How to Play?"
-        // how -> p
-        document.querySelector('.how p').innerHTML = "Use your <i><u>arrow keys</u></i> to move the tiles. Tiles with the same number merge into one when they touch. Add them up to reach <b>2048</b>!"
-        // #text-score
-        document.querySelector('#text-score').textContent = "Score";
-        // #gameOver -> #reset
-        document.querySelector('#gameOver #reset').textContent = "Try Again";
-    }
+    currentLanguageIndex = (currentLanguageIndex + 1) % supportedLanguages.length;
+    const currentLanguage = supportedLanguages[currentLanguageIndex];
+    updateTextContent(currentLanguage);
 }
 
 function onClickBtnHowTo() {
@@ -358,13 +367,13 @@ function closeHowToDialog() {
 
 //Theme Switcher
 var body = document.querySelector("body"), // Creates a variable called body, so we can reference it more easily below.
-  goLight = function() { // Creates a function called goLight that adds the 'dark' class to the body
-    body.className = "";
-  },
-  goDark = function() { // Creates a function called goDark that removes the 'dark' class from the body
-    body.className = "";
-    body.classList.add("dark");
-  }
+    goLight = function() { // Creates a function called goLight that adds the 'dark' class to the body
+        body.className = "";
+    },
+    goDark = function() { // Creates a function called goDark that removes the 'dark' class from the body
+        body.className = "";
+        body.classList.add("dark");
+    }
 
 document.querySelector(".theme1").addEventListener("click", goLight, false); // Tells the first button to run the goLight function when clicked
 
@@ -374,19 +383,19 @@ switchImmediately(); // Invoke the function
 function updateTheme(theme) {
     const body = document.querySelector("body");
     if (theme === "light") {
-      body.classList.remove("dark");
-      document.querySelector(".button1.theme1").classList.remove("dark-theme-button");
+        body.classList.remove("dark");
+        document.querySelector(".button1.theme1").classList.remove("dark-theme-button");
     } else {
-      body.classList.add("dark");
-      document.querySelector(".button1.theme1").classList.add("dark-theme-button");
+        body.classList.add("dark");
+        document.querySelector(".button1.theme1").classList.add("dark-theme-button");
     }
-  }
-  
-  document.querySelector(".theme1").addEventListener("click", () => {
+}
+
+document.querySelector(".theme1").addEventListener("click", () => {
     updateTheme("light");
-  });
-  
-  document.querySelector(".theme2").addEventListener("click", () => {
+});
+
+document.querySelector(".theme2").addEventListener("click", () => {
     updateTheme("dark");
-  });
+});
 
