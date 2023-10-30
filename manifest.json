@@ -1,0 +1,37 @@
+{
+  "short_name": "2048",
+  "name": "2048 Game - Play Online for Free",
+  "id": "/index.html",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "form-factor": "wide",
+  "icons": [
+    {
+      "src": "./assets/2048-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./assets/2048-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "./assets/2048-UI.png",
+      "sizes": "1921x971",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "2048 Desktop UI"
+    },
+    {
+      "src": "./assets/2048-mobile-ui.png",
+      "sizes": "628x788",
+      "type": "image/png",
+      "label": "2048 Mobile UI"
+    }
+  ]
+}
