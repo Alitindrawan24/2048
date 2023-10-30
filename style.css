@@ -5,10 +5,19 @@ body {
   font-family: "Roboto", sans-serif;
   &.dark {
     background: url("assets/bg.gif");
-    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
   }
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.wrapper {
+  height: 100%;
+  overflow: auto;
 }
 
 td,
@@ -194,8 +203,9 @@ header .btn-translate img {
   }
 }
 
-button:hover {
-  transform: scale(1.1);
+button:hover,
+button:focus-visible {
+  transform: scale(1.05);
 }
 
 ._2 {
