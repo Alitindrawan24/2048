@@ -32,7 +32,7 @@ header .btn-how-to,
 
 .game-container {
   margin: auto;
-  padding: 30px;
+  padding: 1rem;
   width: fit-content;
 }
 
@@ -307,9 +307,6 @@ button:focus-visible {
   background: linear-gradient(to right, #cc2b5e, #753a88);
   color: white;
   border-radius: 8px;
-  line-height: 24px;
-  max-width: 100%;
-  padding: 0 25px;
   position: relative;
 }
 
@@ -376,8 +373,7 @@ button:focus-visible {
 .buttonContainer {
   display: flex;
   justify-content: center;
-  margin-bottom: 1rem;
-  margin-top: 1.5rem;
+  margin-block: 0.5rem;
   gap: 0.5rem;
 }
 
@@ -386,7 +382,7 @@ button:focus-visible {
   color: white;
   border-radius: 8px;
   line-height: 24px;
-  padding: 1rem 1.5rem; /* Adjusted padding */
+  padding: 0.5rem 1.5rem; /* Adjusted padding */
   margin-inline: 10px;
   cursor: pointer;
 }
@@ -420,7 +416,6 @@ body.light .button1 {
   border-radius: 8px;
   line-height: 24px;
   max-width: 100%;
-  padding: 0 25px;
 }
 
 .button1.theme2 {
@@ -433,7 +428,6 @@ body.light .button1 {
   border-radius: 8px;
   line-height: 24px;
   max-width: 100%;
-  padding: 0 25px;
 }
 
 .button1.theme1.dark-theme-button {
@@ -460,7 +454,6 @@ body.light .button1 {
   color: white;
   border-radius: 8px;
   line-height: 24px;
-  padding: 10px 25px; /* Adjusted padding */
   margin: 0 10px;
 }
 
@@ -482,5 +475,4 @@ body.light .button1 {
   border-radius: 8px;
   line-height: 24px;
   max-width: 100%;
-  padding: 0 25px;
 }
