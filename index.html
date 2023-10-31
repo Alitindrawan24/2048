@@ -46,31 +46,36 @@
     <link rel="icon" href="assets/favicon.ico" />
 
     <link
-      href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Roboto:wght@100;300;400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Roboto:wght@400&display=swap"
       rel="stylesheet"
     />
+    <link rel="manifest" href="manifest.json" />
 
     <link rel="stylesheet" href="./style.css" />
+    <script src="./app.js" defer></script>
   </head>
 
   <body>
-    <!-- Theme Switcher  -->
+    <div class="wrapper">
+      <!-- Theme Switcher  -->
 
-    <div class="buttonContainer">
-      <button class="button1 theme1">Light Theme</button>
-      <button class="button1 theme2">Dark Theme</button>
-    </div>
+      <div class="button-container">
+        <button class="theme-button light-theme" data-light-theme-button>
+          Light Theme
+        </button>
+        <button class="theme-button dark-theme" data-dark-theme-button>
+          Dark Theme
+        </button>
+      </div>
 
-    <!-- GAME -->
-    <main class="game-container">
-      <header>
+      <header class="score-wrapper">
         <button class="btn-how-to" onclick="onClickBtnHowTo()">
           <span>?</span>
         </button>
 
         <div class="score">
-          <span id="text-score">Score</span>
-          <span id="num-score">0</span>
+          <h2 class="score-title" id="text-score">Score</h2>
+          <p class="score-result" id="num-score">0</p>
         </div>
 
         <button class="btn-translate">
@@ -78,56 +83,57 @@
         </button>
       </header>
 
-      <table aria-hidden="true" aria-label="Game Board">
-        <tr>
-          <td id="00"></td>
-          <td id="01"></td>
-          <td id="02"></td>
-          <td id="03"></td>
-        </tr>
-        <tr>
-          <td id="10"></td>
-          <td id="11"></td>
-          <td id="12"></td>
-          <td id="13"></td>
-        </tr>
-        <tr>
-          <td id="20"></td>
-          <td id="21"></td>
-          <td id="22"></td>
-          <td id="23"></td>
-        </tr>
-        <tr>
-          <td id="30"></td>
-          <td id="31"></td>
-          <td id="32"></td>
-          <td id="33"></td>
-        </tr>
-      </table>
+      <!-- GAME -->
+      <main class="game-container">
+        <table aria-hidden="true" aria-label="Game Board">
+          <tr>
+            <td id="00"></td>
+            <td id="01"></td>
+            <td id="02"></td>
+            <td id="03"></td>
+          </tr>
+          <tr>
+            <td id="10"></td>
+            <td id="11"></td>
+            <td id="12"></td>
+            <td id="13"></td>
+          </tr>
+          <tr>
+            <td id="20"></td>
+            <td id="21"></td>
+            <td id="22"></td>
+            <td id="23"></td>
+          </tr>
+          <tr>
+            <td id="30"></td>
+            <td id="31"></td>
+            <td id="32"></td>
+            <td id="33"></td>
+          </tr>
+        </table>
 
-      <div id="gameOver">
-        <button id="reset" onclick="restart()">Try Again</button>
-      </div>
+        <div id="gameOver">
+          <button id="reset" onclick="restart()">Try Again</button>
+        </div>
 
-      <dialog id="dialog-how-to">
-        <section class="how">
-          <h3>How to Play?</h3>
+        <dialog id="dialog-how-to">
+          <section class="how">
+            <h3 class="dialog-title">How to Play?</h3>
 
-          <button class="btn-close-dialog" onclick="closeHowToDialog()">
-            <span>X</span>
-          </button>
+            <button class="btn-close-dialog" onclick="closeHowToDialog()">
+              X
+            </button>
 
-          <p>
-            Use your <em><u>arrow keys</u></em> to move the tiles. Tiles with
-            the same number merge into one when they touch. Add them up to reach
-            <strong>2048</strong>!
-          </p>
+            <p>
+              Use your <em><u>arrow keys</u></em> to move the tiles. Tiles with
+              the same number merge into one when they touch. Add them up to
+              reach <strong>2048</strong>!
+            </p>
 
-          <img src="assets/arrow.png" />
-        </section>
-      </dialog>
-    </main>
+            <img src="assets/arrow.png" />
+          </section>
+        </dialog>
+      </main>
+    </div>
   </body>
 </html>
-
-<script src="./app.js"></script>

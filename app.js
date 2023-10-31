@@ -1,3 +1,15 @@
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker
+    .register("./service-worker.js")
+    .then((registration) =>
+      console.log(`Service Worker registered with scope: ${registration.scope}`)
+    )
+    .catch((error) =>
+      console.log(`Service Worker registration failed:
+        ${error}`)
+    );
+}
+
 let dialogHowTo = document.querySelector("#dialog-how-to");
 let stopGame = false;
 
@@ -362,41 +374,17 @@ function closeHowToDialog() {
   dialogHowTo.close();
 }
 
-//Theme Switcher
-var body = document.querySelector("body"), // Creates a variable called body, so we can reference it more easily below.
-  goLight = function () {
-    // Creates a function called goLight that adds the 'dark' class to the body
-    body.className = "";
-  },
-  goDark = function () {
-    // Creates a function called goDark that removes the 'dark' class from the body
-    body.className = "";
-    body.classList.add("dark");
-  };
+// Theme Update
+const lightButton = document.querySelector("[data-light-theme-button]");
+const darkButton = document.querySelector("[data-dark-theme-button]");
 
-document.querySelector(".theme1").addEventListener("click", goLight, false); // Tells the first button to run the goLight function when clicked
-
-document.querySelector(".theme2").addEventListener("click", goDark, false); // Tells the second button to run the goDark function when clicked
+lightButton.addEventListener("click", () => updateTheme("light"));
+darkButton.addEventListener("click", () => updateTheme("dark"));
 
 function updateTheme(theme) {
-  const body = document.querySelector("body");
-  if (theme === "light") {
-    body.classList.remove("dark");
-    document
-      .querySelector(".button1.theme1")
-      .classList.remove("dark-theme-button");
-  } else {
-    body.classList.add("dark");
-    document
-      .querySelector(".button1.theme1")
-      .classList.add("dark-theme-button");
-  }
+  const body = document.body;
+
+  if (theme === "light") return body.classList.remove("dark");
+
+  body.classList.add("dark");
 }
-
-document.querySelector(".theme1").addEventListener("click", () => {
-  updateTheme("light");
-});
-
-document.querySelector(".theme2").addEventListener("click", () => {
-  updateTheme("dark");
-});
