@@ -10,6 +10,10 @@ Please Create an issue first then make pull request if you have any suggestion o
 * Star this repository.
 * Create an issue with description that how you want to contribute in this project.
 * Then fork this repository.
+* Then on your terminal run
+*<code>git clone https://github.com/your-username/2048.git<code/>
+*Then create a new branch
+*<code>git checout -b"new-branch"</code>
 * In forked repository add your changes.
 * Then make pull request with issue number.
 * Wait for review.
