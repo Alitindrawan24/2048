@@ -13,7 +13,7 @@ Please Create an issue first then make pull request if you have any suggestion o
 * Then on your terminal run
 *<code>git clone https://github.com/your-username/2048.git<code/>
 *Then create a new branch
-*<code>git checout -b"new-branch"</code>
+*<code>git checkout -b "new-branch"</code>
 * In forked repository add your changes.
 * Then make pull request with issue number.
 * Wait for review.
