@@ -375,16 +375,23 @@ function closeHowToDialog() {
 }
 
 // Theme Update
-const lightButton = document.querySelector("[data-light-theme-button]");
-const darkButton = document.querySelector("[data-dark-theme-button]");
-
-lightButton.addEventListener("click", () => updateTheme("light"));
-darkButton.addEventListener("click", () => updateTheme("dark"));
-
-function updateTheme(theme) {
+document.addEventListener("DOMContentLoaded", function () {
+  const themeToggle = document.getElementById("theme-toggle");
   const body = document.body;
 
-  if (theme === "light") return body.classList.remove("dark");
+  // Check if a theme is already saved in localStorage
+  const savedTheme = localStorage.getItem("theme") || "light";
+  body.classList.add(savedTheme);
+  themeToggle.checked = savedTheme === "dark";
 
-  body.classList.add("dark");
-}
+  // Function to update the theme
+  themeToggle.addEventListener("change", () => {
+    const newTheme = themeToggle.checked ? "dark" : "light";
+
+    // Replace old theme with new theme
+    body.classList.replace(body.classList.contains("dark") ? "dark" : "light", newTheme);
+
+    // Save the new theme to localStorage
+    localStorage.setItem("theme", newTheme);
+  });
+});
