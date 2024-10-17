@@ -59,14 +59,16 @@
     <div class="wrapper">
       <!-- Theme Switcher  -->
 
-      <div class="button-container">
-        <button class="theme-button light-theme" data-light-theme-button>
-          Light Theme
-        </button>
-        <button class="theme-button dark-theme" data-dark-theme-button>
-          Dark Theme
-        </button>
+      <div class="theme-switcher">
+        <input type="checkbox" id="theme-toggle" class="theme-toggle">
+        <label for="theme-toggle" class="slider">
+          <span class="icon sun">🌞</span>
+          <span class="icon moon">🌜</span>
+        </label>
       </div>
+      
+      
+    
 
       <header class="score-wrapper">
         <button class="btn-how-to" onclick="onClickBtnHowTo()">

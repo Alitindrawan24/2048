@@ -58,35 +58,139 @@ button:hover {
 * =====================================
 */
 
-.button-container {
+:root {
+  --bg-light: #ffffff;
+  --bg-dark: #121212;
+  --text-light: #000000;
+  --text-dark: #ffffff;
+  --transition-duration: 0.3s;
+}
+
+/* General body styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-light);
+  transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
+/* Dark theme styles */
+body.dark {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+/* Theme switcher container */
+.theme-switcher {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+/* Hidden checkbox */
+.theme-toggle {
+  display: none;
+}
+
+/* Slider styles */
+.slider {
+  background-color: #ddd;
+  border-radius: 50px;
+  width: 60px;
+  height: 30px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color var(--transition-duration);
   display: flex;
-  gap: 1.5rem;
-  margin-block: 0.5rem;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
 }
 
+/* Slider thumb */
+.slider:before {
+  content: "";
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  background-color: var(--bg-light);
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: transform var(--transition-duration);
+}
+
+/* Icon styles */
+.icon {
+  font-size: 18px;
+  opacity: 1;
+  transition: opacity var(--transition-duration);
+}
+
+.sun {
+  color: var(--text-light);
+}
+
+.moon {
+  color: var(--text-dark);
+  opacity: 0; /* Hidden initially */
+}
+
+/* Toggle: checked state */
+.theme-toggle:checked + .slider {
+  background-color: #4d4d4d; /* Background color when checked */
+}
+
+.theme-toggle:checked + .slider:before {
+  transform: translateX(30px); /* Move thumb when checked */
+}
+
+.theme-toggle:checked + .slider .sun {
+  opacity: 0; /* Hide sun icon when checked */
+}
+
+.theme-toggle:checked + .slider .moon {
+  opacity: 1; /* Show moon icon when checked */
+}
+
+/* Optional aesthetic styles */
+body.light .slider {
+  border: 2px solid var(--bg-dark); /* Border for light theme */
+}
+
+body.dark .slider {
+  border: 2px solid var(--text-light); /* Border for dark theme */
+}
+
+/* Additional button styles */
 .theme-button {
-  background-image: linear-gradient(to right, #cc2b5e, #753a88);
-  color: #fff;
-  border-radius: 0.25rem;
-  padding: 0.5rem 1rem;
-  outline: none;
-  border-width: 0.05rem;
-  border-style: solid;
-  border-color: transparent;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color var(--transition-duration);
 }
 
-body.dark .theme-button {
-  background-color: transparent;
-  background-image: none;
-  box-shadow: var(--dark-button-shadow);
-  border-color: hotpink;
+.light-theme {
+  background-color: #f0f0f0; /* Light theme button background */
 }
 
-.theme-button:hover,
-.theme-button:focus-visible {
-  border-color: #ccc;
+.dark-theme {
+  background-color: #333; /* Dark theme button background */
+  color: var(--text-dark); /* Text color for dark theme button */
 }
+
+/* Dark theme active state styles */
+body.dark .theme-button.dark-theme {
+  border: 2px solid var(--text-dark); /* Border for dark theme button */
+}
+
+body.dark .theme-button.light-theme {
+  border: none; /* Remove border for light theme button */
+}
+
 
 /*
 * =====================================
