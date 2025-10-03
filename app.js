@@ -1,3 +1,4 @@
+// Service Worker Registration
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
     .register("./service-worker.js")
@@ -5,37 +6,43 @@ if ("serviceWorker" in navigator) {
       console.log(`Service Worker registered with scope: ${registration.scope}`)
     )
     .catch((error) =>
-      console.log(`Service Worker registration failed:
-        ${error}`)
+      console.log(`Service Worker registration failed: ${error}`)
     );
 }
 
+// Game Variables
 let dialogHowTo = document.querySelector("#dialog-how-to");
 let stopGame = false;
-
 let arr = [];
 let hasCombine = [];
 let hasMove = true;
 let score = 0;
-for (var i = 0; i < 4; i++) {
+
+// Initialize Game Arrays
+for (let i = 0; i < 4; i++) {
   arr[i] = [];
   hasCombine[i] = [];
-  for (var j = 0; j < 4; j++) {
+  for (let j = 0; j < 4; j++) {
     arr[i][j] = 0;
     hasCombine[i][j] = false;
   }
 }
-x = Math.floor(Math.random() * 4);
-y = Math.floor(Math.random() * 4);
+
+// Start Game with Initial Tile
+let x = Math.floor(Math.random() * 4);
+let y = Math.floor(Math.random() * 4);
 arr[x][y] = 2;
 fill();
+
+// Event Listeners
 document.addEventListener("keydown", keyPush);
 
 document.addEventListener("click", (event) => {
   const keyboardEventObject = {
-    keyCode: 0, // example values.
+    keyCode: 0,
   };
   const validButtons = ["up", "down", "left", "right"];
+  
   if (validButtons.includes(event.target.name)) {
     switch (event.target.name) {
       case "up":
@@ -58,15 +65,17 @@ document.addEventListener("click", (event) => {
   }
 });
 
+// Handle Key Presses
 function keyPush(evt) {
   if (dialogHowTo.open || stopGame) return;
 
   hasMove = false;
+  
   switch (evt.keyCode) {
-    case 37:
-      for (var i = 0; i < 4; i++) {
-        for (var j = 0; j < 4; j++) {
-          c = 0;
+    case 37: // Left
+      for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 4; j++) {
+          let c = 0;
           while (j - c > 0) {
             if (arr[i][j - c - 1] == 0) {
               swap(i, j - c, i, j - c - 1);
@@ -79,10 +88,11 @@ function keyPush(evt) {
       }
       fill();
       break;
-    case 38:
-      for (var i = 0; i < 4; i++) {
-        for (var j = 0; j < 4; j++) {
-          c = 0;
+      
+    case 38: // Up
+      for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 4; j++) {
+          let c = 0;
           while (i - c > 0) {
             if (arr[i - c - 1][j] == 0) {
               swap(i - c, j, i - c - 1, j);
@@ -95,10 +105,11 @@ function keyPush(evt) {
       }
       fill();
       break;
-    case 39:
-      for (var i = 0; i < 4; i++) {
-        for (var j = 3; j >= 0; j--) {
-          c = 0;
+      
+    case 39: // Right
+      for (let i = 0; i < 4; i++) {
+        for (let j = 3; j >= 0; j--) {
+          let c = 0;
           while (j + c < 3) {
             if (arr[i][j + c + 1] == 0) {
               swap(i, j + c, i, j + c + 1);
@@ -111,10 +122,11 @@ function keyPush(evt) {
       }
       fill();
       break;
-    case 40:
-      for (var i = 3; i >= 0; i--) {
-        for (var j = 0; j < 4; j++) {
-          c = 0;
+      
+    case 40: // Down
+      for (let i = 3; i >= 0; i--) {
+        for (let j = 0; j < 4; j++) {
+          let c = 0;
           while (i + c < 3) {
             if (arr[i + c + 1][j] == 0) {
               swap(i + c, j, i + c + 1, j);
@@ -130,31 +142,33 @@ function keyPush(evt) {
   }
 }
 
+// Fill Board After Move
 function fill() {
   if (!isFull()) {
     if (hasMove) randomXY();
   }
+  
   if (isFull()) {
     if (isGameOver()) {
       document.getElementById("gameOver").style.display = "block";
-
+      
       arr = arr.map((line, lineIndex) =>
         line.map((item, itemIndex) => {
           if (lineIndex === 0 || lineIndex === arr.length - 1) return "*";
           return ["GAME", "OVER"][lineIndex - 1][itemIndex];
         })
       );
-
+      
       stopGame = true;
     }
   }
-  for (var i = 0; i < 4; i++) {
-    for (var j = 0; j < 4; j++) {
-      temp = document.getElementById(i + "" + j);
-
+  
+  for (let i = 0; i < 4; i++) {
+    for (let j = 0; j < 4; j++) {
+      const temp = document.getElementById(i + "" + j);
+      
       if (arr[i][j] != 0) {
         const value = arr[i][j];
-
         temp.innerHTML = value;
         temp.classList = [`_${value <= 2048 ? value : "greater-than-2048"}`];
       } else {
@@ -166,25 +180,29 @@ function fill() {
   resetHasCombine();
 }
 
+// Generate Random Tile
 function randomXY() {
   do {
     x = Math.floor(Math.random() * 4);
     y = Math.floor(Math.random() * 4);
   } while (arr[x][y] != 0);
-  z = Math.ceil(Math.random() * 10);
+  
+  const z = Math.ceil(Math.random() * 10);
   if (z >= 7) arr[x][y] = 4;
   else arr[x][y] = 2;
 }
 
+// Swap Two Tiles
 function swap(a, b, x, y) {
   if (arr[a][b] != 0 || arr[x][y] != 0) {
-    temp = arr[a][b];
+    const temp = arr[a][b];
     arr[a][b] = arr[x][y];
     arr[x][y] = temp;
     hasMove = true;
   }
 }
 
+// Combine Two Tiles
 function combine(a, b, x, y) {
   if (!hasCombine[x][y] && !hasCombine[a][b]) {
     arr[x][y] += arr[x][y];
@@ -196,18 +214,20 @@ function combine(a, b, x, y) {
   }
 }
 
+// Reset Combine Flags
 function resetHasCombine() {
-  for (var i = 0; i < 4; i++) {
-    for (var j = 0; j < 4; j++) {
+  for (let i = 0; i < 4; i++) {
+    for (let j = 0; j < 4; j++) {
       hasCombine[i][j] = false;
     }
   }
 }
 
+// Check if Board is Full
 function isFull() {
-  full = true;
-  for (var i = 0; i < 4; i++) {
-    for (var j = 0; j < 4; j++) {
+  let full = true;
+  for (let i = 0; i < 4; i++) {
+    for (let j = 0; j < 4; j++) {
       if (arr[i][j] == 0) {
         full = false;
         break;
@@ -218,10 +238,11 @@ function isFull() {
   return full;
 }
 
+// Check if Game is Over
 function isGameOver() {
-  gameOver = true;
-  for (var i = 0; i < 4; i++) {
-    for (var j = 0; j < 4; j++) {
+  let gameOver = true;
+  for (let i = 0; i < 4; i++) {
+    for (let j = 0; j < 4; j++) {
       if (i > 0) {
         if (arr[i - 1][j] == arr[i][j]) {
           gameOver = false;
@@ -252,15 +273,14 @@ function isGameOver() {
   return gameOver;
 }
 
+// Restart Game
 function restart() {
-  // Reset game state
   arr = [];
   hasCombine = [];
   hasMove = true;
   stopGame = false;
   score = 0;
 
-  // Initialize the game board
   for (let i = 0; i < 4; i++) {
     arr[i] = [];
     hasCombine[i] = [];
@@ -270,21 +290,14 @@ function restart() {
     }
   }
 
-  // Generate a new tile
   generateNewTile();
-
-  // Hide game over message
   document.getElementById("gameOver").style.display = "none";
-
-  // Update the score display
   updateScoreDisplay();
-
-  // Update the game board display
   updateGameBoardDisplay();
 }
 
+// Generate New Tile
 function generateNewTile() {
-  // Generate a new tile (either 2 or 4) at a random empty position
   let emptyPositions = [];
   for (let i = 0; i < 4; i++) {
     for (let j = 0; j < 4; j++) {
@@ -302,13 +315,13 @@ function generateNewTile() {
   }
 }
 
+// Update Score Display
 function updateScoreDisplay() {
-  // Update the displayed score
   document.getElementById("num-score").innerHTML = score;
 }
 
+// Update Game Board Display
 function updateGameBoardDisplay() {
-  // Update the game board display based on the current state of the game array
   for (let i = 0; i < 4; i++) {
     for (let j = 0; j < 4; j++) {
       const tileElement = document.getElementById(i + "" + j);
@@ -321,7 +334,7 @@ function updateGameBoardDisplay() {
   }
 }
 
-// Function to update text content based on the selected language
+// Update Text Content Based on Language
 function updateTextContent(currentLanguage) {
   const howHeader = document.querySelector(".how h3");
   const howText = document.querySelector(".how p");
@@ -355,10 +368,10 @@ function updateTextContent(currentLanguage) {
   }
 }
 
-// btn-translate
+// Language Translation Button
 let btnTranslate = document.getElementsByClassName("btn-translate")[0];
-const supportedLanguages = ["en", "id", "es", "zh"]; // Languages - English, Indonesian, Spanish, Chinese
-let currentLanguageIndex = 0; // Start with the first language
+const supportedLanguages = ["en", "id", "es", "zh"];
+let currentLanguageIndex = 0;
 
 btnTranslate.onclick = () => {
   currentLanguageIndex = (currentLanguageIndex + 1) % supportedLanguages.length;
@@ -366,6 +379,7 @@ btnTranslate.onclick = () => {
   updateTextContent(currentLanguage);
 };
 
+// Dialog Functions
 function onClickBtnHowTo() {
   dialogHowTo.showModal();
 }
@@ -374,24 +388,18 @@ function closeHowToDialog() {
   dialogHowTo.close();
 }
 
-// Theme Update
+// Theme Toggle - Using in-memory storage instead of localStorage
 document.addEventListener("DOMContentLoaded", function () {
   const themeToggle = document.getElementById("theme-toggle");
   const body = document.body;
 
-  // Check if a theme is already saved in localStorage
-  const savedTheme = localStorage.getItem("theme") || "light";
-  body.classList.add(savedTheme);
-  themeToggle.checked = savedTheme === "dark";
+  // Default to light theme
+  let currentTheme = "light";
+  body.classList.add(currentTheme);
 
-  // Function to update the theme
   themeToggle.addEventListener("change", () => {
     const newTheme = themeToggle.checked ? "dark" : "light";
-
-    // Replace old theme with new theme
-    body.classList.replace(body.classList.contains("dark") ? "dark" : "light", newTheme);
-
-    // Save the new theme to localStorage
-    localStorage.setItem("theme", newTheme);
+    body.classList.replace(currentTheme, newTheme);
+    currentTheme = newTheme;
   });
 });

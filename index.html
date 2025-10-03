@@ -14,7 +14,6 @@
       name="keywords"
       content="2048 game, online 2048, puzzle game, 2048 tile, play 2048"
     />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="canonical" href="https://alitindrawan24.github.io/2048/" />
 
     <!-- Open Graph Tags -->
@@ -26,7 +25,7 @@
     <meta property="og:type" content="website" />
     <meta
       property="og:image"
-      content="https://alitindrawan24.github.io/2048//assets/2048-og.png"
+      content="https://alitindrawan24.github.io/2048/assets/2048-og.png"
     />
 
     <!-- Twitter Card Tags -->
@@ -38,7 +37,7 @@
     />
     <meta
       name="twitter:image"
-      content="https://alitindrawan24.github.io/2048//assets/2048-og.png"
+      content="https://alitindrawan24.github.io/2048/assets/2048-og.png"
     />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -46,7 +45,7 @@
     <link rel="icon" href="assets/favicon.ico" />
 
     <link
-      href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Roboto:wght@400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
     />
     <link rel="manifest" href="manifest.json" />
@@ -58,7 +57,6 @@
   <body>
     <div class="wrapper">
       <!-- Theme Switcher  -->
-
       <div class="theme-switcher">
         <input type="checkbox" id="theme-toggle" class="theme-toggle">
         <label for="theme-toggle" class="slider">
@@ -66,12 +64,9 @@
           <span class="icon moon">🌜</span>
         </label>
       </div>
-      
-      
-    
 
       <header class="score-wrapper">
-        <button class="btn-how-to" onclick="onClickBtnHowTo()">
+        <button class="btn-how-to" onclick="onClickBtnHowTo()" aria-label="How to play">
           <span>?</span>
         </button>
 
@@ -80,38 +75,40 @@
           <p class="score-result" id="num-score">0</p>
         </div>
 
-        <button class="btn-translate">
+        <button class="btn-translate" aria-label="Change language">
           <img src="assets/translate.svg" alt="Translate icon" />
         </button>
       </header>
 
       <!-- GAME -->
       <main class="game-container">
-        <table aria-hidden="true" aria-label="Game Board">
-          <tr>
-            <td id="00"></td>
-            <td id="01"></td>
-            <td id="02"></td>
-            <td id="03"></td>
-          </tr>
-          <tr>
-            <td id="10"></td>
-            <td id="11"></td>
-            <td id="12"></td>
-            <td id="13"></td>
-          </tr>
-          <tr>
-            <td id="20"></td>
-            <td id="21"></td>
-            <td id="22"></td>
-            <td id="23"></td>
-          </tr>
-          <tr>
-            <td id="30"></td>
-            <td id="31"></td>
-            <td id="32"></td>
-            <td id="33"></td>
-          </tr>
+        <table aria-label="Game Board">
+          <tbody>
+            <tr>
+              <td id="00"></td>
+              <td id="01"></td>
+              <td id="02"></td>
+              <td id="03"></td>
+            </tr>
+            <tr>
+              <td id="10"></td>
+              <td id="11"></td>
+              <td id="12"></td>
+              <td id="13"></td>
+            </tr>
+            <tr>
+              <td id="20"></td>
+              <td id="21"></td>
+              <td id="22"></td>
+              <td id="23"></td>
+            </tr>
+            <tr>
+              <td id="30"></td>
+              <td id="31"></td>
+              <td id="32"></td>
+              <td id="33"></td>
+            </tr>
+          </tbody>
         </table>
 
         <div id="gameOver">
@@ -122,8 +119,8 @@
           <section class="how">
             <h3 class="dialog-title">How to Play?</h3>
 
-            <button class="btn-close-dialog" onclick="closeHowToDialog()">
-              X
+            <button class="btn-close-dialog" onclick="closeHowToDialog()" aria-label="Close dialog">
+              ✕
             </button>
 
             <p>
@@ -132,7 +129,7 @@
               reach <strong>2048</strong>!
             </p>
 
-            <img src="assets/arrow.png" />
+            <img src="assets/arrow.png" alt="Arrow keys illustration" />
           </section>
         </dialog>
       </main>
