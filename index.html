@@ -75,9 +75,14 @@
           <p class="score-result" id="num-score">0</p>
         </div>
 
-        <button class="btn-translate" aria-label="Change language">
-          <img src="assets/translate.svg" alt="Translate icon" />
-        </button>
+        <div class="header-buttons">
+          <button class="btn-sound" onclick="toggleSound()" aria-label="Toggle sound">
+            <span id="sound-icon">🔊</span>
+          </button>
+          <button class="btn-translate" aria-label="Change language">
+            <img src="assets/translate.svg" alt="Translate icon" />
+          </button>
+        </div>
       </header>
 
       <!-- GAME -->
@@ -112,6 +117,12 @@
         </table>
 
         <div id="gameOver">
+          <h2 class="game-over-title">Game Over!</h2>
+          <div class="game-stats">
+            <p>Final Score: <span id="final-score">0</span></p>
+            <p>Highest Tile: <span id="highest-tile">2</span></p>
+            <p>Moves Made: <span id="move-count">0</span></p>
+          </div>
           <button id="reset" onclick="restart()">Try Again</button>
         </div>
 
