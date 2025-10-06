@@ -155,13 +155,19 @@ button:active {
 
 .score-wrapper {
   display: grid;
-  grid-template-columns: 3.5rem 1fr 3.5rem;
+  grid-template-columns: 3.5rem 1fr auto;
   gap: 1.5rem;
   max-width: 500px;
   width: 100%;
   margin: 2rem auto 2rem;
   align-items: center;
   padding: 0 1rem;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 }
 
 .btn-how-to,
@@ -439,10 +445,12 @@ td {
   font-size: 2.5rem;
   font-family: var(--font-fredoka);
   background-color: rgba(238, 228, 218, 0.35);
-  transition: all 0.15s ease-in-out;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   font-weight: bold;
   color: #776e65;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
 }
 
 body.dark td {
@@ -451,32 +459,162 @@ body.dark td {
 }
 
 td:not(:empty) {
-  animation: appear 0.15s ease-in-out;
+  animation: appear 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 @keyframes appear {
   0% {
-    transform: scale(0);
+    transform: scale(0) rotate(180deg);
     opacity: 0;
   }
   50% {
-    transform: scale(1.1);
+    transform: scale(1.1) rotate(0deg);
   }
   100% {
-    transform: scale(1);
+    transform: scale(1) rotate(0deg);
     opacity: 1;
   }
 }
 
+@keyframes merge {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-down {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.tile-merge {
+  animation: merge 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.tile-slide-left {
+  animation: slide-in 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.tile-slide-up {
+  animation: slide-up 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.tile-slide-right {
+  animation: slide-right 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.tile-slide-down {
+  animation: slide-down 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Particle Effects */
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #09d635;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+@keyframes particle-burst {
+  0% {
+    transform: scale(0) translate(0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translate(var(--random-x), var(--random-y));
+    opacity: 0;
+  }
+}
+
+.particle-burst {
+  animation: particle-burst 0.6s ease-out forwards;
+}
+
+body.dark .particle {
+  background: #bc13fe;
+}
+
 @media (max-width: 600px) {
+  .wrapper {
+    padding: 0.5rem;
+  }
+  
   table {
     border-spacing: 0.5rem;
+    padding: 0.25rem;
   }
 
   td {
     width: 4.5rem;
     height: 4.5rem;
     font-size: 1.75rem;
+  }
+  
+  .theme-switcher {
+    top: 10px;
+    right: 10px;
+  }
+  
+  .slider {
+    width: 50px;
+    height: 25px;
+  }
+  
+  .slider:before {
+    width: 21px;
+    height: 21px;
+  }
+  
+  .theme-toggle:checked + .slider:before {
+    transform: translateX(25px);
   }
 }
 
@@ -485,6 +623,33 @@ td:not(:empty) {
     width: 3.75rem;
     height: 3.75rem;
     font-size: 1.5rem;
+  }
+  
+  table {
+    border-spacing: 0.375rem;
+  }
+  
+  .wrapper {
+    padding: 0.25rem;
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .btn-how-to,
+  .btn-translate {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  #reset {
+    min-height: 48px;
+    padding: 1rem 2rem;
   }
 }
 
@@ -501,6 +666,55 @@ td:not(:empty) {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 100;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  text-align: center;
+  animation: gameOverAppear 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+body.dark #gameOver {
+  background: rgba(0, 0, 0, 0.9);
+  box-shadow: var(--dark-button-shadow);
+}
+
+@keyframes gameOverAppear {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+.game-over-title {
+  font-family: var(--font-fredoka);
+  font-size: 2rem;
+  margin: 0 0 1rem 0;
+  color: #776e65;
+}
+
+body.dark .game-over-title {
+  color: #fff;
+  text-shadow: var(--dark-text-shadow);
+}
+
+.game-stats {
+  margin: 1rem 0;
+  font-size: 1.1rem;
+  color: #776e65;
+}
+
+body.dark .game-stats {
+  color: #fff;
+  text-shadow: 0 0 0.1rem #fff, 0 0 0.5rem #bc13fe;
 }
 
 #reset {
@@ -513,6 +727,7 @@ td:not(:empty) {
   font-size: 1.5rem;
   box-shadow: 0 6px 20px rgba(9, 214, 53, 0.4);
   transition: all 0.3s ease;
+  margin-top: 1rem;
 }
 
 #reset:hover {
@@ -706,5 +921,41 @@ body.dark ._greater-than-2048 {
 
   ._greater-than-2048 {
     font-size: 1.125rem !important;
+  }
+}
+
+/* Sound Button Styles */
+.btn-sound {
+  width: 3.5rem;
+  height: 3.5rem;
+  background: linear-gradient(135deg, #09d635 0%, #07a827 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(9, 214, 53, 0.3);
+  transition: all 0.3s ease;
+  font-size: 1.5rem;
+}
+
+body.dark .btn-sound {
+  background: transparent;
+  box-shadow: var(--dark-button-shadow);
+}
+
+.btn-sound:hover {
+  box-shadow: 0 6px 16px rgba(9, 214, 53, 0.4);
+}
+
+body.dark .btn-sound:hover {
+  box-shadow: 0 0 0.3rem #fff, 0 0 0.3rem #fff, 0 0 2.5rem #bc13fe,
+    0 0 1rem #bc13fe, 0 0 3.2rem #bc13fe, inset 0 0 1.5rem #bc13fe;
+}
+
+@media (max-width: 600px) {
+  .btn-sound {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.25rem;
   }
 }
