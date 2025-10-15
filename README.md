@@ -1,6 +1,7 @@
 <h1 align='center'>2048</h1>
 
 Simple 2048 Game using HTML, CSS, and JavaScript  
+<img src="./assets/2048-UI.png" alt="UI">
 
 ### Note:
 Please Create an issue first then make pull request if you have any suggestion or bug report.
